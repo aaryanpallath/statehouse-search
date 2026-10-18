@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-18T22:19:58.368Z",
+  "generated_at": "2026-10-18T22:25:17.983Z",
   "database": "PGlite (PostgreSQL 18 WASM) + pgvector, in-process",
   "embedding_model": "Xenova/all-MiniLM-L6-v2",
   "corpus": {
@@ -10,14 +10,14 @@
   },
   "hybrid": {
     "queries": 200,
-    "p50_ms": 8.82,
-    "p95_ms": 13.69,
+    "p50_ms": 10.19,
+    "p95_ms": 15.06,
     "queries_with_results": 200
   },
   "fts_only": {
     "queries": 200,
-    "p50_ms": 1.67,
-    "p95_ms": 6.69,
+    "p50_ms": 1.79,
+    "p95_ms": 7,
     "queries_with_results": 156
   },
   "environment": {

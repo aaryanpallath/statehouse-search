@@ -9,14 +9,14 @@ export interface Embedder {
 }
 
 /**
- * Local sentence embeddings with all-MiniLM-L6-v2 via @xenova/transformers (ONNX runtime, CPU).
+ * Local sentence embeddings with all-MiniLM-L6-v2 via @huggingface/transformers (ONNX runtime, CPU).
  * Weights are downloaded once from the Hugging Face hub into `cacheDir` (git-ignored).
  */
 export async function createMiniLmEmbedder(cacheDir: string): Promise<Embedder> {
-  const { pipeline, env } = await import('@xenova/transformers');
+  const { pipeline, env } = await import('@huggingface/transformers');
   env.cacheDir = cacheDir;
   env.allowLocalModels = false;
-  const extractor = await pipeline('feature-extraction', MINILM_MODEL, { quantized: true });
+  const extractor = await pipeline('feature-extraction', MINILM_MODEL, { dtype: 'q8' });
   return {
     name: MINILM_MODEL,
     async embed(texts) {
