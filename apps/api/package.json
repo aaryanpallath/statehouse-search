@@ -1,0 +1,23 @@
+{
+  "name": "@statehouse/api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/main.ts",
+    "start": "tsx src/main.ts",
+    "ingest": "tsx scripts/ingest.ts",
+    "fixtures:record": "tsx scripts/record-fixtures.ts",
+    "benchmark": "tsx scripts/benchmark.ts",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@statehouse/core": "0.1.0",
+    "fastify": "^5.12.7",
+    "ws": "^8.22.0"
+  },
+  "devDependencies": {
+    "@types/ws": "^8.18.0",
+    "tsx": "^4.23.15"
+  }
+}

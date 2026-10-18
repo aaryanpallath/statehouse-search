@@ -1,0 +1,36 @@
+{
+  "name": "statehouse",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Legislation search (hybrid FTS + pgvector), bill-version diffing and live collaborative annotations over California bills.",
+  "license": "MIT",
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "vitest run",
+    "ingest": "npm run ingest -w @statehouse/api --",
+    "fixtures:record": "npm run fixtures:record -w @statehouse/api --",
+    "benchmark": "npm run benchmark -w @statehouse/api --",
+    "dev:api": "npm run dev -w @statehouse/api",
+    "dev:web": "npm run dev -w @statehouse/web",
+    "storybook": "npm run storybook -w @statehouse/web",
+    "build-storybook": "npm run build-storybook -w @statehouse/web"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^26.6.5",
+    "eslint": "^10.13.0",
+    "globals": "^17.13.0",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.71.2",
+    "vitest": "^5.0.5"
+  }
+}

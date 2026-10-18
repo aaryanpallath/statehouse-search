@@ -1,0 +1,15 @@
+node_modules/
+.next/
+dist/
+storybook-static/
+coverage/
+*.tsbuildinfo
+.env
+.env.*
+!.env.example
+# downloaded data, local databases, model weights
+data/
+.cache/
+.dl/
+*.onnx
+.DS_Store
