@@ -19,7 +19,7 @@ export function httpRangeFetcher(url: string): RangeFetcher & { size(): Promise<
   const fetcher = async (start: number, end: number): Promise<Buffer> => {
     for (let attempt = 1; ; attempt++) {
       try {
-        const res = await fetch(url, { headers: { Range: `bytes=${start}-${end}` } });
+        const res = await fetch(url, { headers: { Range: `bytes=${start}-${end}` }, signal: AbortSignal.timeout(120_000) });
         if (res.status !== 206) throw new Error(`expected 206 Partial Content, got ${res.status}`);
         return Buffer.from(await res.arrayBuffer());
       } catch (err) {
