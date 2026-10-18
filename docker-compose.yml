@@ -1,0 +1,45 @@
+# Postgres 17 + pgvector, the Node API and the Next.js web app.
+#   docker compose up -d db api web
+#   docker compose run --rm api npm run ingest      # download + embed a few hundred CA bills
+#   docker compose run --rm api npm run benchmark   # writes results/search_latency.json
+services:
+  db:
+    image: pgvector/pgvector:pg17
+    environment:
+      POSTGRES_USER: statehouse
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+      POSTGRES_DB: statehouse
+    ports: ['5432:5432']
+    volumes: ['pgdata:/var/lib/postgresql/data']
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U statehouse']
+      interval: 5s
+      retries: 20
+
+  api:
+    build: .
+    command: ['npm', 'run', 'start', '-w', '@statehouse/api']
+    environment:
+      DATABASE_URL: postgres://statehouse:${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}@db:5432/statehouse
+      FEATURE_SEMANTIC_SEARCH: ${FEATURE_SEMANTIC_SEARCH:-true}
+      PORT: '4000'
+      LOG_LEVEL: info
+      SERVICE_NAME: statehouse-api
+    ports: ['4000:4000']
+    volumes:
+      - ./data:/app/data
+      - ./.cache:/app/.cache
+      - ./results:/app/results
+    depends_on:
+      db: { condition: service_healthy }
+
+  web:
+    build: .
+    command: ['npm', 'run', 'start', '-w', '@statehouse/web']
+    environment:
+      API_URL: http://api:4000
+    ports: ['3000:3000']
+    depends_on: [api]
+
+volumes:
+  pgdata:

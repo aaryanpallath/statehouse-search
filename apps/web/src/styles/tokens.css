@@ -1,0 +1,47 @@
+/* Shared design tokens. Used by the Next.js app and by Storybook (imported in .storybook/preview.ts). */
+:root {
+  /* colour */
+  --color-bg: #f7f7f4;
+  --color-surface: #ffffff;
+  --color-surface-muted: #efefea;
+  --color-border: #d9d9d1;
+  --color-text: #1d1f24;
+  --color-text-muted: #5d6170;
+  --color-accent: #1f4fd1;
+  --color-accent-contrast: #ffffff;
+  --color-highlight: #fff1a8;
+  --color-highlight-active: #ffd84d;
+  --color-insert-bg: #d8f5dd;
+  --color-insert-text: #0f5323;
+  --color-delete-bg: #fbdcdc;
+  --color-delete-text: #7f1414;
+  --color-warning-bg: #fff3d6;
+  --color-warning-text: #7a4a00;
+  --color-danger-bg: #fde2e2;
+  --color-danger-text: #8a1c1c;
+  --color-ok-bg: #e2f3e6;
+  --color-ok-text: #1d5c2e;
+
+  /* typography */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.75rem;
+  --line-height-text: 1.6;
+
+  /* spacing, radius, elevation */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.06), 0 1px 6px rgb(0 0 0 / 0.04);
+  --focus-ring: 0 0 0 3px rgb(31 79 209 / 0.35);
+}
