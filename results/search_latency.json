@@ -1,0 +1,30 @@
+{
+  "generated_at": "2026-10-18T22:19:58.368Z",
+  "database": "PGlite (PostgreSQL 18 WASM) + pgvector, in-process",
+  "embedding_model": "Xenova/all-MiniLM-L6-v2",
+  "corpus": {
+    "bills": 300,
+    "versions": 1179,
+    "chunks": 8675,
+    "billsWith3PlusVersions": 200
+  },
+  "hybrid": {
+    "queries": 200,
+    "p50_ms": 8.82,
+    "p95_ms": 13.69,
+    "queries_with_results": 200
+  },
+  "fts_only": {
+    "queries": 200,
+    "p50_ms": 1.67,
+    "p95_ms": 6.69,
+    "queries_with_results": 156
+  },
+  "environment": {
+    "platform": "darwin",
+    "arch": "arm64",
+    "cpu": "Apple M4",
+    "node": "v26.7.0"
+  },
+  "method": "End-to-end hybridSearch() latency per query (embedding + FTS + vector + RRF + snippets), limit 20, 5 untimed warm-up queries, queries = shuffled bill subject lines."
+}
